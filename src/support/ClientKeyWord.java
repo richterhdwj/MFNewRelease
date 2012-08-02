@@ -6,6 +6,7 @@ package support;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import java.util.zip.GZIPInputStream;
 import org.apache.http.*;
 import org.apache.http.client.methods.HttpGet;
@@ -14,6 +15,10 @@ import org.apache.http.entity.HttpEntityWrapper;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 /**
  *
@@ -103,6 +108,15 @@ public class ClientKeyWord {
             httpclient.getConnectionManager().shutdown();
         }
 
+        Document doc = null;
+        try {
+            doc = (Document) Jsoup.connect(url).get(); 
+        } catch (Exception e) {
+            
+        }
+         String title = doc.title(); 
+         
+         System.out.println(title);
 
         return retString;
     }

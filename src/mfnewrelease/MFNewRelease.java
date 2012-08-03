@@ -40,7 +40,8 @@ public class MFNewRelease extends Application {
         
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setScene(new Scene(root, 840, 480));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }

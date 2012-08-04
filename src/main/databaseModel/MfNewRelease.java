@@ -23,6 +23,7 @@ public class MfNewRelease {
     private String sysFlag;
     private String createTime;
     private Integer order;
+    private String watch;
     
     public String[][] getTableModelSet(){
         return new String[][]{
@@ -34,7 +35,8 @@ public class MfNewRelease {
             {"img","F_IMG","String"},
             {"sysFlag","F_SYS_FLAG","String"},
             {"createTime","F_CREATETIME","String"},
-            {"order","F_ORDER","Integer"}
+            {"order","F_ORDER","Integer"},
+            {"watch","F_WATCH","String"}
         };
     }
 
@@ -109,9 +111,18 @@ public class MfNewRelease {
     public void setOrder(Integer order) {
         this.order = order;
     }
+
+    public String getWatch() {
+        return watch;
+    }
+
+    public void setWatch(String watch) {
+        this.watch = watch;
+    }
     
     public void save() throws Exception{
         DataBaseManager dbm=new DataBaseManager();
+        
         List oldData=dbm.selectObject(this.getClass(),"where t.F_NAME ='"+name+"' and t.F_TYPE_NAME ='"+typeName+"' and t.f_sys_flag='1'");
         if(oldData.size()>0){
             MfNewRelease mfr =(MfNewRelease) oldData.get(0);
@@ -132,6 +143,7 @@ public class MfNewRelease {
         this.setOrder(order);
         this.setCreateTime(DateBean.getSysdateTime());
         this.setSysFlag("1");
+        this.setWatch("0");
         dbm.save(this);
     }
 }

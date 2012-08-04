@@ -20,6 +20,9 @@ public class DataBaseCenter {
        dbc.setInDataBase();
     }
     
+    /**
+     * 将查询到的数据保存到数据库中
+     */
     private void setInDataBase(){
         ClientKeyWord ckw=new ClientKeyWord();
         
